@@ -1,0 +1,128 @@
+/* 960 Grid System ~ Core CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+/* line 14, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 19, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 21, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 96, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 27, ../../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 15, ../src/grid.scss */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  height: 100%;
+}
+/* line 24, ../src/grid.scss */
+.container #header,
+.container #footer,
+.container #left,
+.container #right,
+.container #main-content {
+  display: inline;
+  float: left;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+/* line 28, ../src/grid.scss */
+.container #header {
+  height: 121px;
+}
+/* line 32, ../src/grid.scss */
+.container #footer {
+  margin-top: 50px;
+}
+/* line 36, ../src/grid.scss */
+.container #header, .container #footer {
+  width: 800px;
+}
+/* line 38, ../src/grid.scss */
+.container #main-content {
+  width: 800px;
+  height: 600px;
+  width: 800px;
+  background-color: green;
+}
+
+/* line 46, ../src/grid.scss */
+body {
+  background-color: #000;
+  background-image: url("../images/1x1.jpg");
+  color: #fff;
+}
+
+/* line 52, ../src/grid.scss */
+body, html, .outer1, .outer2, .outer3 {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 57, ../src/grid.scss */
+.outer1 {
+  background-image: url("../images/bottom.jpg");
+  background-repeat: repeat-y;
+  background-position: center top;
+}
+
+/* line 63, ../src/grid.scss */
+.outer2 {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+}

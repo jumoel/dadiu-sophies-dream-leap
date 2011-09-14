@@ -1,75 +1,203 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <meta charset='utf-8'>
+    <title>Sophie's Dream Leap</title>
 
-  <title>jmoeller/sophies-dream-leap @ GitHub</title>
+  <link href="stylesheets/grid.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/text.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<style>
+</style>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #913466;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #6ecb99; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #6ecb99; }
-    h3 { text-align: center; color: #6ecb99; }
-    a { color: #6ecb99; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+		<script language='VBScript'>
+		function DetectUnityWebPlayerActiveX
+			on error resume next
+			dim tControl, res, ua, re, matches, major
+			res = 0
+			set tControl = CreateObject("UnityWebPlayer.UnityWebPlayer.1")
+			if IsObject(tControl) then
+				if tControl.GetPluginVersion() = "2.5.0f5" then
+					' 2.5.0f5 on Vista and later has an auto-update issue
+					' on Internet Explorer. Detect Vista (6.0 or later)
+					' and in that case treat it as not installed
+					ua = Navigator.UserAgent
+					set re = new RegExp
+					re.Pattern = "Windows NT (\d+)\."
+					set matches = re.Execute(ua)
+					if matches.Count = 1 then
+						major = CInt(matches(0).SubMatches(0))
+						if major < 6 then
+							res = 1
+						end if
+					end if
+				else
+					res = 1
+				end if
+			end if
+			DetectUnityWebPlayerActiveX = res
+		end function
+		</script>
+		<script language="javascript1.1" type="text/javascript">
+		
+			function GetUnity () {
+				if (navigator.appVersion.indexOf("MSIE") != -1 && navigator.appVersion.toLowerCase().indexOf("win") != -1)
+					return document.getElementById("UnityObject");
+				else if (navigator.appVersion.toLowerCase().indexOf("safari") != -1)
+					return document.getElementById("UnityObject");
+				else
+					return document.getElementById("UnityEmbed");
+			}
+			
+			function DetectUnityWebPlayer () {
+        		var tInstalled = false;
+        		if (navigator.appVersion.indexOf("MSIE") != -1 && navigator.appVersion.toLowerCase().indexOf("win") != -1) {
+					tInstalled = DetectUnityWebPlayerActiveX();
+        		}
+        		else {
+            		if (navigator.mimeTypes && navigator.mimeTypes["application/vnd.unity"]) {
+                		if (navigator.mimeTypes["application/vnd.unity"].enabledPlugin && navigator.plugins && navigator.plugins["Unity Player"]) {
+                 			tInstalled = true;	
+            			}
+         			}	
+        		}
+        		return tInstalled;	
+    		}
+    		
+    		function GetInstallerPath () {
+    			var tDownloadURL = "";
+	   			var hasXpi = navigator.userAgent.toLowerCase().indexOf( "firefox" ) != -1;
+	   			
+    			// Use standalone installer
+    			if (1)
+    			{
+					if (navigator.platform == "MacIntel")
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/webplayer-i386.dmg";
+					else if (navigator.platform == "MacPPC")
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/webplayer-ppc.dmg";
+					else if (navigator.platform.toLowerCase().indexOf("win") != -1)
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayer.exe";
+					return tDownloadURL;
+    			}
+    			// Use XPI installer
+				else
+				{
+					if (navigator.platform == "MacIntel")
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayerOSX.xpi";
+					else if (navigator.platform == "MacPPC")
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayerOSX.xpi";
+					else if (navigator.platform.toLowerCase().indexOf("win") != -1)
+						tDownloadURL = "http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayerWin32.xpi";
+					return tDownloadURL;
+				}    			
+    		}
+			
+			function AutomaticReload () {
+				navigator.plugins.refresh();
+				if (DetectUnityWebPlayer())
+					window.location.reload();
+
+				setTimeout('AutomaticReload()', 500)
+			}
+			
+		</script>
+
 </head>
-
 <body>
-  <a href="http://github.com/jmoeller/sophies-dream-leap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/jmoeller/sophies-dream-leap/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/jmoeller/sophies-dream-leap/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/jmoeller/sophies-dream-leap">sophies-dream-leap</a>
-      <span class="small">by <a href="http://github.com/jmoeller">jmoeller</a></span></h1>
-
-    <div class="description">
-      
-    </div>
-
-    <h2>Contact</h2>
-<p>Julian Møller (julian@julianmoeller.dk)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/jmoeller/sophies-dream-leap/zipball/master">zip</a> or
-      <a href="http://github.com/jmoeller/sophies-dream-leap/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/jmoeller/sophies-dream-leap</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/jmoeller/sophies-dream-leap">jmoeller/sophies-dream-leap</a>
-    </div>
-
-  </div>
-
+<div class="outer1">
+<div class="outer2">
+  <div class="container">
+  <div id="header"></div>
+  <div id="main-content">
+  <!-- begin unity -->
   
+  <script language="javascript1.1" type="text/javaScript">
+				var hasUnity = DetectUnityWebPlayer();
+				var brokenUnity = false;
+				if (hasUnity) {
+					
+					document.write('<object id="UnityObject" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394" width="800" height="600"> \n');
+					document.write('  <param name="src" value="DreamLeap.unity3d" /> \n');
+					document.write('  <param name="backgroundcolor" value="EAEBCF" /> \n');
+					document.write('  <param name="textcolor" value="000000" /> \n');
+					document.write('  <param name="logoimage" value="logo.png" /> \n');
+					document.write('  <param name="progressbarimage" value="progressbar.png" /> \n');
+					document.write('  <param name="progressframeimage" value="progressframe.png" /> \n');
+					document.write('  <embed id="UnityEmbed" src="DreamLeap.unity3d" width="800" height="600" type="application/vnd.unity" pluginspage="http://www.unity3d.com/unity-web-player-2.x" backgroundcolor="EAEBCF" textcolor="000000" logoimage="logo.png" progressbarimage="progressbar.png" progressframeimage="progressframe.png" /> \n');
+					document.write('</object>');
+					
+					// if Unity does not define to GetPluginVersion on Safari on 10.6, we presume the plugin
+					// failed to load because it is not compatible with 64-bit Safari.
+					if (navigator.appVersion.indexOf("Safari") != -1
+						&& navigator.appVersion.indexOf("Mac OS X 10_6") != -1
+						&& document.getElementById("UnityEmbed").GetPluginVersion == undefined)
+						brokenUnity = true;
+
+					// 2.5.0 cannot auto update on ppc. Treat as broken.
+					else if (document.getElementById("UnityEmbed").GetPluginVersion() == "2.5.0f5" 
+						&& navigator.platform == "MacPPC")
+						brokenUnity = true;
+				}
+				if (!hasUnity || brokenUnity) {
+				
+					var installerPath = GetInstallerPath();
+					if (installerPath != "") {
+						// Place a link to the right installer depending on the platform we are on. The iframe is very important! Our goals are:
+						// 1. Don't have to popup new page
+						// 2. This page still remains active, so our automatic reload script will refresh the page when the plugin is installed
+						document.write('<div align="center" id="UnityPrompt"> \n');
+						if (brokenUnity)
+							document.write('  <a href= ' + installerPath + '><img src="http://webplayer.unity3d.com/installation/getunityrestart.png" border="0"/></a> \n');
+						else
+							document.write('  <a href= ' + installerPath + '><img src="http://webplayer.unity3d.com/installation/getunity.png" border="0"/></a> \n');
+						document.write('</div> \n');
+						
+						// By default disable ActiveX cab installation, because we can't make a nice Install Now button
+//						if (navigator.appVersion.indexOf("MSIE") != -1 && navigator.appVersion.toLowerCase().indexOf("win") != -1)
+						if (0)
+						{	
+							document.write('<div id="InnerUnityPrompt"> <p>Title</p>');
+							document.write('<p> Contents</p>');
+							document.write("</div>");
+
+							var innerUnityPrompt = document.getElementById("InnerUnityPrompt");
+							
+							var innerHtmlDoc =
+								'<object id="UnityInstallerObject" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394" width="320" height="50" codebase="http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayer.cab#version=2,0,0,0">\n' + 
+							    '</object>';
+							    
+							innerUnityPrompt.innerHTML = innerHtmlDoc;
+						}
+
+						document.write('<iframe name="InstallerFrame" height="0" width="0" frameborder="0"></iframe>\n');
+					}
+					else {
+						document.write('<div align="center" id="UnityPrompt"> \n');
+						if (brokenUnity)
+							document.write('  <a href="javascript: window.open("http://www.unity3d.com/unity-web-player-2.x"); "><img src="http://webplayer.unity3d.com/installation/getunityrestart.png" border="0"/></a> \n');
+						else
+							document.write('  <a href="javascript: window.open("http://www.unity3d.com/unity-web-player-2.x"); "><img src="http://webplayer.unity3d.com/installation/getunity.png" border="0"/></a> \n');
+						document.write('</div> \n');
+					}
+					
+					// hide broken player
+					if (brokenUnity)
+						document.getElementById("UnityEmbed").height = 0;
+						
+					// Reload when detected unity plugin - but only if no previous plugin is installed 
+					// - in that case a browser restart is needed.
+					if (!brokenUnity)
+						AutomaticReload();
+				}
+			
+			</script>
+  
+  
+  <!-- end unity -->
+  </div>
+  <div id="footer">Footer</div>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
