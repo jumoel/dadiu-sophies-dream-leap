@@ -84,3 +84,7 @@ address,
 fieldset {
   margin-bottom: 20px;
 }
+
+a {
+  color: #f6d790;
+}
